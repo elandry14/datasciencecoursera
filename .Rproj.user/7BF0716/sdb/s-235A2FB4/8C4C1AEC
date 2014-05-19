@@ -1,0 +1,16 @@
+{
+    "contents" : "pollutantmean <- function(directory, pollutant, id = 1:332) {\n    \n    allcleandata <- c()\n    \n    for(i in id) {    \n        counter <- 0\n        tmp <- i\n        \n        while (tmp >= 1) {\n            tmp <- tmp / 10\n            counter <- counter + 1\n        }\n        \n        result <- 3 - counter\n    \n        if (result == 0) {\n            string <- toString(i)\n        } else if (result == 1) {\n            string <- toString(i)\n            string <-paste(\"0\", string, sep = \"\")\n        } else {\n            string <- toString(i)\n            string <-paste(\"00\", string, sep = \"\")\n        }\n        \n        file <- paste(directory, \"/\", string, \".csv\", sep = \"\")\n        #print(file)\n        openfile<- read.csv(file)\n    \n        if(pollutant == \"sulfate\") {\n            data <- openfile[,2]\n        }\n        else if(pollutant == \"nitrate\") {\n            data <- openfile[,3]\n        }\n        \n        clean.data <- is.na(data)\n        data[!clean.data]\n        mean(data[!clean.data])\n        allcleandata <- c(allcleandata, data[!clean.data])\n    }\n    \n    #print(allcleandata)\n    mean(allcleandata)\n}",
+    "created" : 1400078066130.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3483081507",
+    "id" : "8C4C1AEC",
+    "lastKnownWriteTime" : 1400005495,
+    "path" : "~/datasciencecoursera/pollutantmean.R",
+    "project_path" : "pollutantmean.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

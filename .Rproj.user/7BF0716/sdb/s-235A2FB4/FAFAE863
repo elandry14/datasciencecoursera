@@ -1,0 +1,17 @@
+{
+    "contents" : "complete <- function(directory, id = 1:332) {\n    \n    nobs <- numeric()\n    \n    for(i in id) {   \n        counter <- 0\n        tmp <- i\n        \n        while (tmp >= 1) {\n            tmp <- tmp / 10\n            counter <- counter + 1\n        }\n        \n        result <- 3 - counter\n        \n        if (result == 0) {\n            string <- toString(i)\n        } else if (result == 1) {\n            string <- toString(i)\n            string <-paste(\"0\", string, sep = \"\")\n        } else {\n            string <- toString(i)\n            string <-paste(\"00\", string, sep = \"\")\n        }\n        \n        file <- paste(directory, \"/\", string, \".csv\", sep = \"\")\n        #print(file)\n        openfile<- read.csv(file)\n        #print(openfile)\n        \n        sulfate <- openfile[,2]\n        nitrate <- openfile[,3]\n        good <- complete.cases(sulfate, nitrate)\n        nob <- length(sulfate[good])\n        #print(nob)\n        nobs <- c(nobs, nob)\n    }\n    x <- data.frame (id, nobs)\n    print(x)\n}",
+    "created" : 1400005558052.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1926547460",
+    "id" : "FAFAE863",
+    "lastKnownWriteTime" : 1400009134,
+    "path" : "~/datasciencecoursera/complete.R",
+    "project_path" : "complete.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
